@@ -4,14 +4,14 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Users
  *
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -144,7 +144,7 @@ class User
         return $this->createAt;
     }
 
-    public function setCreateAt(\DateTimeInterface $createAt)
+    public function setCreateAt( $createAt)
     {
         $this->createAt = $createAt;
 
@@ -159,4 +159,20 @@ class User
     }
 
 
+
+    public function getUsername(){
+        return $this->email;
+    }
+
+    public function getSalt(){
+        return null;
+    }
+
+    public function getRoles(){
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials(){
+
+    }
 }
