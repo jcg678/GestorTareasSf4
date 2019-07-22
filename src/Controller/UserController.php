@@ -18,7 +18,7 @@ class UserController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
             $user->setRole('ROLE_USER');
             //$date_now = (new \DateTime())->format('d-m-y H:i:s');
             $user->setCreateAt(new \DateTime('now'));
