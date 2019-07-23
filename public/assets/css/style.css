@@ -40,3 +40,51 @@ button:hover,input[type="submit"]:hover{
 background: #047425;
 }
 
+#header{
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+}
+
+#menu {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    background: #eee;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+
+#menu li{
+    display: block;
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-right: 1px solid grey;
+    cursor: pointer;
+    transion: all 300ms;
+}
+
+#menu a{
+    display: block;
+    color: #444;
+    text-decoration: none;
+    transion: all 300ms;
+}
+
+#menu li:hover{
+    background: #444;
+
+}
+
+#menu li:hover a{
+
+    color: white;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
