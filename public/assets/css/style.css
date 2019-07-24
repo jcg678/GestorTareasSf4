@@ -111,3 +111,21 @@ table td
 table td{
     background: #e9ffea;
 }
+
+.buttons a{
+    text-decoration: none;
+    border: 1px solid green;
+    padding: 10px;
+    color: white;
+    background: #00AA33;
+}
+
+.buttons .btn-delete{
+    background: red;
+    border: 1px solid darkred;
+}
+
+.buttons .btn-edit{
+    background: orange;
+    border: 1px solid orangered;
+}
