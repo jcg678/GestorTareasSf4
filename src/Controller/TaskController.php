@@ -14,8 +14,8 @@ class TaskController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $tasks_repo=$this->getDoctrine()->getRepository(Task::class);
-        /*$tasks = $tasks_repo->findAll();
-
+        $tasks = $tasks_repo->findAll([],['id'=>'DESC']);
+        /*
         foreach($tasks as $task){
             echo $task->getUser()->getEmail().':'.$task->getTitle()."<br>";
         }
@@ -31,7 +31,7 @@ class TaskController extends AbstractController
         }*/
 
         return $this->render('task/index.html.twig', [
-            'controller_name' => 'TaskController',
+            'tasks' => $tasks
         ]);
     }
 }
