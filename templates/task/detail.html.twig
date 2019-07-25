@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TaskController!{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>{{ task.title }} ✅</h1>
+        <p class="data-task">{{ task.user.name }} {{ task.user.surname }} - {{ task.createAt|date('d/m/y h:i') }}</p>
+        <p>{{ task.content }}</p>
+        <p>
+            {% if task.priority == 'high' %}
+                Alta
+            {% endif %}
+            {% if task.priority == 'medium' %}
+                Media
+            {% endif %}
+            {% if task.priority == 'low' %}
+                Baja
+            {% endif %}
+        </p>
+        <p>Horas: {{ task.hours }}</p>
+    </div>
+{% endblock %}

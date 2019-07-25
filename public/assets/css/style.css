@@ -129,3 +129,6 @@ table td{
     background: orange;
     border: 1px solid orangered;
 }
+.data-task{
+    color: #ccc;
+}
