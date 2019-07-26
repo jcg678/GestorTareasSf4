@@ -73,8 +73,6 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            //$task->setUser($this->getUser());
-            //$task->setCreateAt(new \DateTime('now'));
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
@@ -89,5 +87,19 @@ class TaskController extends AbstractController
            'edit'=>true,
             'form'=>$form->createView()
         ]);
+    }
+
+    public function delete(Task $task){
+        if(!$task){
+            return $this->redirectToRoute('tasks');
+        }
+
+        if( $this->getUser()->getId() != $task->getUser()->getId()){
+            return $this->redirectToRoute('tasks');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($task);
+        $em->flush();
+        return $this->redirectToRoute('my_tasks');
     }
 }
