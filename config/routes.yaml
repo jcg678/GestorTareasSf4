@@ -22,3 +22,7 @@ task_detail:
 task_creation:
     path: /crear/tarea
     controller: App\Controller\TaskController::creation
+
+task_edit:
+    path: /editar-tarea/{id}
+    controller: App\Controller\TaskController::edit
