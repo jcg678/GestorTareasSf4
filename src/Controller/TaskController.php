@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
-
+use App\Form\TaskType;
+use Symfony\Component\Security\Core\User\UserInterface;
 class TaskController extends AbstractController
 {
 
@@ -31,7 +33,24 @@ class TaskController extends AbstractController
     }
 
     public function creation(Request $request){
+        $task = new Task();
+        $form = $this->createForm(TaskType::class, $task);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
 
-        return $this->render('task\creation.html.twig');
+            $task->setUser($this->getUser());
+            $task->setCreateAt(new \DateTime('now'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+
+            return $this->redirect(
+                $this->generateUrl('task_detail', ['id'=>$task->getId()])
+            );
+
+        }
+        return $this->render('task\creation.html.twig',[
+            'form'=>$form->createView()
+        ]);
     }
 }

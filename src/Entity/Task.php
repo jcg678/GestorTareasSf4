@@ -136,7 +136,7 @@ class Task
         return $this->user;
     }
 
-    public function setUser(Users $user)
+    public function setUser(User $user)
     {
         $this->user = $user;
 

@@ -14,7 +14,9 @@ body{
 
 input[type="text"],
 input[type="password"],
-input[type="email"]{
+input[type="email"],
+select, textarea
+{
     width: 70%;
     padding: 8px;
 }
@@ -131,4 +133,8 @@ table td{
 }
 .data-task{
     color: #ccc;
+}
+
+.buttons{
+    width: 33%;
 }
