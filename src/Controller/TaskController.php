@@ -53,4 +53,13 @@ class TaskController extends AbstractController
             'form'=>$form->createView()
         ]);
     }
+
+    public function myTasks(){
+        $user =$this->getUser();
+        $tasks = $user->getTasks();
+
+        return $this->render('task/my-tasks.html.twig',[
+           'tasks'=>$tasks
+        ]);
+    }
 }
